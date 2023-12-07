@@ -1,0 +1,36 @@
+---
+import '@astrojs/tailwind/base.css'
+const { title } = Astro.props
+---
+<!doctype html>
+<html lang="{{ metadata.language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{ title }</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="dns-prefetch" href="https://image.tmdb.org">
+    <link rel="preconnect" href="https://image.tmdb.org">
+
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:title" content={ title }>
+    <!-- <meta property="og:description" content="{{ description or metadata.description }}"> -->
+    <!-- <meta property="og:url" content="{{ page.url | htmlBaseUrl }}"> -->
+    <!-- <meta property="og:site_name" content="{{ metadata.title }}"> -->
+    <meta property="og:type" content="website">
+    <!-- <meta property="og:image" content="https://og-generator.adamwills.vercel.app/api/adamwillscom/og?title={{ title | urlencode }}&subtitle={{ subtitle | urlencode}}"> -->
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen bg-white  text-slate-900 ">
+    <a href="#skip" class="sr-only focus:not-sr-only focus:absolute bg-white text-slate-900 focus:p-4">Skip to main content</a>
+
+
+    <main id="skip" class="max-w-7xl mx-auto px-8 w-full">
+        <slot />
+    </main>
+
+    <!-- Current page: {{ page.url | htmlBaseUrl }} -->
+  </body>
+</html>

@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MegaTitle from "@components/MegaTitle.astro";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const lists = await getCollection("lists");
+  return lists.map((list) => ({
+    params: { slug: list.slug },
+    props: { list },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { list } = Astro.props;
+const { Content } = await list.render();
+
+const formattedDate = new Date(list.data.updated).toLocaleDateString("en-ca", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={list.data.title}>
+  <MegaTitle title={list.data.title} subtitle="A list of…" />
+  <p class="text-center font-black uppercase text-lg">
+    Updated: {formattedDate}
+  </p>
+  <Content />
+</BaseLayout>

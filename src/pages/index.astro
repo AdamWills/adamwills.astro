@@ -1,16 +1,38 @@
 ---
+import { getCollection, getEntry } from "astro:content";
+import { Debug } from "astro:components";
 
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MegaTitle from "../components/MegaTitle.astro";
+
+const allLists = await getCollection("lists");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home">
+  <MegaTitle title="Adam Wills" subtitle="The Personal Site of" />
+
+  <section class="text-center prose prose-xl mx-auto">
+    <p class="mb-0">
+      Looking for Adam's business site?
+      <a class="" href="https://adamwills.dev">Head to adamwills.dev</a>
+    </p>
+  </section>
+
+  <section class="text-center mt-24">
+    <h2 class="text-7xl font-black uppercase text-center mb-8">Latest Lists</h2>
+    <ul class="flex flex-col gap-8">
+      {
+        allLists.map((l) => (
+          <li class="">
+            <a
+              href={`/lists/${l.slug}`}
+              class="text-4xl font-extrabold uppercase relative underline underline-offset-4 decoration-brand-red-700 decoration-8"
+            >
+              {l.data.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

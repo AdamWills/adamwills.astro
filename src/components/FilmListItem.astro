@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  link: string;
+  year: string;
+  director: string;
+  tmdbCoverId: string;
+  description?: string;
+}
+const { title, link, year, director, tmdbCoverId, description } = Astro.props;
+---
+
+<li
+  class="shadow-solid border-brand-black focus-within:border-brand-red-700 group relative mx-auto mb-8 flex max-w-2xl flex-col-reverse justify-between overflow-hidden border-4 shadow-black transition-all [-webkit-backface-visibility:hidden] last:mb-0 focus-within:scale-110 focus-within:bg-neutral-300 focus-within:shadow-none hover:shadow-none motion-safe:focus-within:rotate-0 md:h-64 md:flex-row md:odd:rotate-1 md:even:-rotate-1 md:even:flex-row-reverse md:hover:rotate-0 md:hover:scale-110"
+>
+  <div class="relative flex-grow p-4 md:static md:p-8">
+    <div
+      class="absolute hidden text-[396px] font-black leading-none opacity-10 before:content-[counter(list)] md:-top-24 md:left-0 md:block md:group-even:left-auto md:group-even:right-0"
+      style="counter-increment: list"
+    >
+    </div>
+
+    <a
+      href={link}
+      class="pointer-events-none text-2xl font-bold uppercase focus:outline-none md:pointer-events-auto"
+    >
+      <span
+        class="before:content-[counter(list)] md:hidden"
+        style="counter-increment: list">.</span
+      >
+      {title}
+      <span class="bg-blue absolute inset-0 h-full w-full"></span>
+    </a>
+    <div class="text-lg font-bold uppercase">{year}</div>
+    <div>Directed by {director}</div>
+    {description && <div class="mt-4 [text-wrap:pretty]">{description}</div>}
+  </div>
+  <div class="inline-flex min-w-fit">
+    <img
+      class="aspect-[2/3] min-h-[256px] object-cover"
+      src={`https://image.tmdb.org/t/p/w500/${tmdbCoverId}.jpg`}
+      alt=""
+      loading="lazy"
+    />
+  </div>
+</li>

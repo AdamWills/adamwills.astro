@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "updatedDate": {
+      "type": "string"
+    },
+    "listType": {
+      "type": "string"
+    },
+    "intro": {
+      "type": "string"
+    },
+    "outro": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "list": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/film" }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["title", "listType", "tags", "list"],
+  "$defs": {
+    "film": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        },
+        "director": {
+          "type": "string"
+        },
+        "tmdbCoverId": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["title", "year", "director", "tmdbCoverId", "link"]
+    }
+  }
+}

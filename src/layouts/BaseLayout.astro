@@ -1,35 +1,81 @@
 ---
-import '@astrojs/tailwind/base.css'
-const { title } = Astro.props
+import "@astrojs/tailwind/base.css";
+const { title, subtitle = undefined } = Astro.props;
+import { ViewTransitions } from "astro:transitions";
 ---
+
 <!doctype html>
-<html lang="{{ metadata.language }}">
+<html lang="en-ca">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{ title }</title>
-    <meta name="description" content="{{ description or metadata.description }}">
-    <link rel="dns-prefetch" href="https://image.tmdb.org">
-    <link rel="preconnect" href="https://image.tmdb.org">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="{{ description or metadata.description }}"
+    />
+    <link rel="dns-prefetch" href="https://image.tmdb.org" />
+    <link rel="preconnect" href="https://image.tmdb.org" />
 
     <meta name="generator" content={Astro.generator} />
 
-    <meta property="og:title" content={ title }>
+    <meta property="og:title" content={title} />
     <!-- <meta property="og:description" content="{{ description or metadata.description }}"> -->
     <!-- <meta property="og:url" content="{{ page.url | htmlBaseUrl }}"> -->
     <!-- <meta property="og:site_name" content="{{ metadata.title }}"> -->
-    <meta property="og:type" content="website">
-    <!-- <meta property="og:image" content="https://og-generator.adamwills.vercel.app/api/adamwillscom/og?title={{ title | urlencode }}&subtitle={{ subtitle | urlencode}}"> -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content={`https://og-generator.adamwills.vercel.app/api/adamwillscom/og?title=${encodeURIComponent(
+        title,
+      )}&subtitle=${encodeURIComponent(subtitle)}`}
+    />
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <ViewTransitions />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
   </head>
-  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen bg-white  text-slate-900 ">
-    <a href="#skip" class="sr-only focus:not-sr-only focus:absolute bg-white text-slate-900 focus:p-4">Skip to main content</a>
+  <body
+    class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-white text-slate-900"
+  >
+    <a
+      href="#skip"
+      class="sr-only bg-white text-slate-900 focus:not-sr-only focus:absolute focus:p-4"
+      >Skip to main content</a
+    >
 
+    <header class="py-2 text-center text-2xl font-extrabold uppercase">
+      <nav>
+        <ul class="flex justify-center gap-8">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/lists">Lists</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-    <main id="skip" class="max-w-7xl mx-auto px-8 w-full">
-        <slot />
+    <main id="skip" class="mx-auto w-full max-w-7xl px-8">
+      <slot />
     </main>
+
+    <footer class="bg-brand-black mt-24 text-white">
+      <div class="mx-auto w-full max-w-7xl px-8 py-4 text-center">
+        <p class="text-sm">
+          Made with
+          <span class="text-brand-red-base">&hearts;</span>
+           by Adam Wills
+        </p>
+      </div>
+    </footer>
 
     <!-- Current page: {{ page.url | htmlBaseUrl }} -->
   </body>

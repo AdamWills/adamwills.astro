@@ -1,0 +1,75 @@
+---
+title: Favourite Albums of 2023
+tags:
+  - music
+  - 2023
+updated: 2023-12-22
+---
+
+import Intro from "@components/Intro.astro";
+import List from "@components/List.astro";
+import FilmListItem from "@components/FilmListItem.astro";
+import AlbumListItem from "@components/AlbumListItem.astro";
+
+{
+
+<Intro>
+  <p>
+    I find as the years go on, there's less new music that I'm picking up on.
+    It's likely also a result of retiring as a radio show host where I was
+    "forced" into keeping up with new music.
+  </p>
+</Intro>
+}
+
+<List>
+  <AlbumListItem
+    title="False Lankum"
+    artist="Lankum"
+    year="2023"
+    genres={["avant-folk", "folk", "irish folk", "post-industrial"]}
+    spotifyLink="https://open.spotify.com/album/2lu7c86G1ptjMJVL9upG1H?"
+    bandcampLink="https://lankum.bandcamp.com/album/false-lankum"
+    youtubeLink="https://www.youtube.com/watch?v=qhqpQiXnFx0"
+    coverUrl="https://ia601609.us.archive.org/23/items/mbid-d9bcbd26-aa5e-48ff-a195-b6de4c06fedb/mbid-d9bcbd26-aa5e-48ff-a195-b6de4c06fedb-35285317026_thumb500.jpg"
+  />
+  <AlbumListItem
+    title="Future’s Shadow, Part 1: The Clandestine Gate"
+    artist="Bell Witch"
+    year="2023"
+    genres={["funeral doom metal"]}
+    bandcampLink="https://bellwitch.bandcamp.com/album/futures-shadow-part-1-the-clandestine-gate"
+    spotifyLink="https://open.spotify.com/album/2QM2myURiJUxGHf1p7XHKy"
+    youtubeLink="https://www.youtube.com/watch?v=Mg8TLge8gUU"
+    coverUrl="https://archive.org/download/mbid-b74af046-c2fc-4e80-b6dc-a7fe9b83ffc3/mbid-b74af046-c2fc-4e80-b6dc-a7fe9b83ffc3-35452294846_thumb500.jpg"
+  />
+  <AlbumListItem
+    title="CYRM"
+    artist="ØXN"
+    year="2023"
+    genres={["avant-folk", "folk"]}
+    spotifyLink="https://open.spotify.com/album/7KBKojoN6AMpr5iQzKd2qD"
+    youtubeLink="https://www.youtube.com/watch?v=ZJYJSFy9B4A"
+    coverUrl="https://archive.org/download/mbid-38b44a13-d919-4425-8315-62f8665ece3b/mbid-38b44a13-d919-4425-8315-62f8665ece3b-37099219480_thumb500.jpg"
+  />
+  <AlbumListItem
+    title="Engine of Hell Live at Roadburn"
+    artist="Emma Ruth Rundle"
+    year="2023"
+    genres={["folk rock", "post-rock", "ambient", "experimental", "indie rock"]}
+    bandcampLink="https://emmaruthrundle.bandcamp.com/album/engine-of-hell-live-at-roadburn"
+    spotifyLink="https://open.spotify.com/album/0ccx45fgHGalFyUQhtrLTu"
+    youtubeLink="https://www.youtube.com/watch?v=E5da_7bLV04"
+    coverUrl="https://archive.org/download/mbid-c394391a-5d8e-4130-b63b-ead649897431/mbid-c394391a-5d8e-4130-b63b-ead649897431-36123774634_thumb500.jpg"
+  />
+  <AlbumListItem
+    title="nature morte"
+    artist="BIG|BRAVE"
+    year="2023"
+    genres={["doom metal", "post-metal"]}
+    bandcampLink="https://bigbrave.bandcamp.com/album/nature-morte"
+    spotifyLink="https://open.spotify.com/album/0hWLmkDhhEi597QFRl1NuV"
+    youtubeLink="https://www.youtube.com/watch?v=5ykxccMCszw"
+    coverUrl="https://archive.org/download/mbid-f7246deb-15c2-4cd0-b48a-648f11a9ae19/mbid-f7246deb-15c2-4cd0-b48a-648f11a9ae19-34991348413_thumb500.jpg"
+  />
+</List>

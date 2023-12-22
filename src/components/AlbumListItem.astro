@@ -1,0 +1,106 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  year: string;
+  spotifyLink?: string;
+  bandcampLink?: string;
+  youtubeLink?: string;
+  artist: string;
+  coverUrl: string;
+  genres: string[];
+}
+
+import BandcampIcon from "@components/BandcampIcon.astro";
+import SpotifyIcon from "@components/SpotifyIcon.astro";
+import PlayIcon from "@components/PlayIcon.astro";
+
+const {
+  title,
+  description,
+  year,
+  spotifyLink,
+  bandcampLink,
+  artist,
+  coverUrl,
+  youtubeLink,
+  genres,
+} = Astro.props;
+---
+
+<li
+  class="album-card group relative mx-auto mb-16 flex max-w-2xl flex-col-reverse justify-between overflow-hidden border-4 border-brand-black shadow-solid shadow-black transition-all [-webkit-backface-visibility:hidden] last:mb-0 focus-within:scale-110 md:flex-row md:odd:rotate-1 md:even:-rotate-1 md:even:flex-row-reverse md:hover:rotate-0 md:hover:scale-110 md:hover:shadow-none motion-safe:md:focus-within:rotate-0 [&:has(:focus-visible)]:border-brand-red-base [&:has(:focus-visible)]:shadow-none"
+>
+  <div class="relative flex flex-grow flex-col justify-between p-4 md:static">
+    <div>
+      <div
+        class="absolute -z-10 hidden text-[396px] font-black leading-none opacity-10 before:content-[counter(list)] md:-top-24 md:left-0 md:block md:group-even:left-auto md:group-even:right-0"
+        style="counter-increment: list"
+      >
+      </div>
+      <div class="text-2xl font-bold uppercase">
+        <span
+          class="before:content-[counter(list)] md:hidden"
+          style="counter-increment: list">.</span
+        >
+        {title}
+      </div>
+      <div class="text-lg font-bold uppercase">{artist}</div>
+      <div>{year}</div>
+      {
+        description && (
+          <div class="mt-4 text-pretty md:line-clamp-3">{description}</div>
+        )
+      }
+    </div>
+    <footer class="flex gap-4 py-2 md:group-even:justify-end">
+      {
+        bandcampLink && (
+          <a
+            href={bandcampLink}
+            class=" outline-offset-2 outline-brand-red-base"
+          >
+            <>
+              <span class="sr-only">{title} on Bandcamp</span>
+              <BandcampIcon />
+            </>
+          </a>
+        )
+      }
+      {
+        spotifyLink && (
+          <a
+            href={spotifyLink}
+            class=" outline-offset-2 outline-brand-red-base"
+          >
+            <>
+              <span class="sr-only">{title} on Spotify</span>
+              <SpotifyIcon />
+            </>
+          </a>
+        )
+      }
+      {
+        youtubeLink && (
+          <a
+            href={youtubeLink}
+            class=" outline-offset-2 outline-brand-red-base"
+          >
+            <>
+              <span class="sr-only">{title} on YouTube</span>
+              <PlayIcon />
+            </>
+          </a>
+        )
+      }
+    </footer>
+  </div>
+  <div class="inline-flex min-w-fit md:max-w-[96px]">
+    <img
+      class="h-full w-full object-cover md:aspect-square md:max-h-[256px]"
+      src={coverUrl}
+      alt=""
+      loading="lazy"
+    />
+  </div>
+</li>

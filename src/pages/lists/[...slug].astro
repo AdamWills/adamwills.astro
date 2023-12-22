@@ -22,9 +22,9 @@ const formattedDate = new Date(list.data.updated).toLocaleDateString("en-ca", {
 });
 ---
 
-<BaseLayout title={list.data.title}>
+<BaseLayout title={list.data.title} subtitle="A list of…">
   <MegaTitle title={list.data.title} subtitle="A list of…" />
-  <p class="text-center font-black uppercase text-lg">
+  <p class="text-center text-lg font-black uppercase">
     Updated: {formattedDate}
   </p>
   <Content />

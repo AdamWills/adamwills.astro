@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         "brand-red": {
+          base: "#d40d0a",
           50: "#fff1f1",
           100: "#ffdfdf",
           200: "#ffc5c4",
@@ -23,7 +24,33 @@ export default {
         "brand-black": "#0d0d0a",
         "brand-blue": "#101827",
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme("colors.brand-black"),
+            a: {
+              // backgroundColor: "transparent",
+              // textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              // textDecorationColor: theme("colors.brand-red.700"),
+              textDecorationThickness: "3px",
+              // color: theme("colors.brand-red.700"),
+              transition: "all 0.2s ease-in-out",
+              display: "inline-block",
+              "&:hover": {
+                color: theme("colors.brand-red.base"),
+                textDecorationColor: theme("colors.brand-red.base"),
+              },
+              "&:focus": {
+                backgroundColor: theme("colors.brand-red.base"),
+                color: "white",
+                outline: "none",
+              },
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

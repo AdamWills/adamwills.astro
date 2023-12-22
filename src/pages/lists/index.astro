@@ -1,22 +1,21 @@
 ---
-import { getCollection, getEntry } from "astro:content";
-import { Debug } from "astro:components";
+import { getCollection } from "astro:content";
 
 import BaseLayout from "@layouts/BaseLayout.astro";
 import MegaTitle from "@components/MegaTitle.astro";
+import Intro from "@components/Intro.astro";
 
 const allLists = await getCollection("lists");
 ---
 
-<BaseLayout title="Home">
-  <MegaTitle title="Adam Wills" subtitle="The Personal Site of" />
+<BaseLayout title="Lists - Adam Wills">
+  <MegaTitle title="Lists" subtitle="A Bunch of" />
 
-  <section class="prose prose-xl mx-auto text-center">
-    <p class="mb-0">
-      Looking for Adam's business site?
-      <a class="" href="https://adamwills.dev">Head to adamwills.dev</a>
+  <Intro>
+    <p class="text-center text-4xl">
+      Who doesn't love a good list? Well here's a list of lists!
     </p>
-  </section>
+  </Intro>
 
   <section class="mt-24 text-center">
     <h2 class="mb-8 text-center text-7xl font-black uppercase">Latest Lists</h2>

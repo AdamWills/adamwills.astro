@@ -1,43 +1,86 @@
 ---
 interface Props {
   title: string;
-  link: string;
+  link?: string;
   year: string;
   director: string;
   tmdbCoverId: string;
   description?: string;
+  letterboxdLink?: string;
+  trailerLink?: string;
 }
-const { title, link, year, director, tmdbCoverId, description } = Astro.props;
+
+import LetterboxdIcon from "@components/LetterboxdIcon.astro";
+import PlayIcon from "@components/PlayIcon.astro";
+
+const {
+  title,
+  year,
+  director,
+  tmdbCoverId,
+  description,
+  letterboxdLink,
+  trailerLink,
+} = Astro.props;
 ---
 
 <li
-  class="shadow-solid border-brand-black focus-within:border-brand-red-700 group relative mx-auto mb-8 flex max-w-2xl flex-col-reverse justify-between overflow-hidden border-4 shadow-black transition-all [-webkit-backface-visibility:hidden] last:mb-0 focus-within:scale-110 focus-within:bg-neutral-300 focus-within:shadow-none hover:shadow-none motion-safe:focus-within:rotate-0 md:h-64 md:flex-row md:odd:rotate-1 md:even:-rotate-1 md:even:flex-row-reverse md:hover:rotate-0 md:hover:scale-110"
+  class="film-card group relative mx-auto mb-16 flex max-w-2xl flex-col-reverse justify-between overflow-hidden border-4 border-brand-black shadow-solid shadow-black transition-all [-webkit-backface-visibility:hidden] last:mb-0 focus-within:scale-110 md:flex-row md:odd:rotate-1 md:even:-rotate-1 md:even:flex-row-reverse md:hover:rotate-0 md:hover:scale-110 md:hover:shadow-none motion-safe:md:focus-within:rotate-0 [&:has(:focus-visible)]:border-brand-red-base [&:has(:focus-visible)]:shadow-none"
 >
-  <div class="relative flex-grow p-4 md:static md:p-8">
-    <div
-      class="absolute hidden text-[396px] font-black leading-none opacity-10 before:content-[counter(list)] md:-top-24 md:left-0 md:block md:group-even:left-auto md:group-even:right-0"
-      style="counter-increment: list"
-    >
-    </div>
-
-    <a
-      href={link}
-      class="pointer-events-none text-2xl font-bold uppercase focus:outline-none md:pointer-events-auto"
-    >
-      <span
-        class="before:content-[counter(list)] md:hidden"
-        style="counter-increment: list">.</span
+  <div class="relative flex flex-grow flex-col justify-between p-4 md:static">
+    <div>
+      <div
+        class="absolute -z-10 hidden text-[396px] font-black leading-none opacity-10 before:content-[counter(list)] md:-top-24 md:left-0 md:block md:group-even:left-auto md:group-even:right-0"
+        style="counter-increment: list"
       >
-      {title}
-      <span class="bg-blue absolute inset-0 h-full w-full"></span>
-    </a>
-    <div class="text-lg font-bold uppercase">{year}</div>
-    <div>Directed by {director}</div>
-    {description && <div class="mt-4 [text-wrap:pretty]">{description}</div>}
+      </div>
+      <div class="text-2xl font-bold uppercase">
+        <span
+          class="before:content-[counter(list)] md:hidden"
+          style="counter-increment: list">.</span
+        >
+        {title}
+      </div>
+      <div class="text-lg font-bold uppercase">{year}</div>
+      <div>Directed by {director}</div>
+      {
+        description && (
+          <div class="mt-4 line-clamp-3 text-pretty">{description}</div>
+        )
+      }
+    </div>
+    <footer class="flex gap-4 py-2 md:group-even:justify-end">
+      {
+        letterboxdLink && (
+          <a
+            href={letterboxdLink}
+            class=" outline-offset-2 outline-brand-red-base"
+          >
+            <>
+              <span class="sr-only">{title} on Letterboxd</span>
+              <LetterboxdIcon />
+            </>
+          </a>
+        )
+      }
+      {
+        trailerLink && (
+          <a
+            href={trailerLink}
+            class=" outline-offset-2 outline-brand-red-base"
+          >
+            <>
+              <span class="sr-only">Watch the trailer for {title}</span>
+              <PlayIcon />
+            </>
+          </a>
+        )
+      }
+    </footer>
   </div>
-  <div class="inline-flex min-w-fit">
+  <div class="inline-flex min-w-fit md:max-w-[96px]">
     <img
-      class="aspect-[2/3] min-h-[256px] object-cover"
+      class="h-full w-full object-cover md:aspect-[2/3] md:max-h-[256px]"
       src={`https://image.tmdb.org/t/p/w500/${tmdbCoverId}.jpg`}
       alt=""
       loading="lazy"

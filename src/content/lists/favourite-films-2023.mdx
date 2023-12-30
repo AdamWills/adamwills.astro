@@ -3,7 +3,7 @@ title: Favourite Films of 2023
 tags:
   - film
   - 2023
-updated: 2023-12-01
+updated: 2023-12-30
 ---
 
 import Intro from "@components/Intro.astro";
@@ -16,11 +16,20 @@ import FilmListItem from "@components/FilmListItem.astro";
   <p>2023 ended up being a big year for film. Barbenheimer took control over pop-culture discourse for weeks,
   and we saw new output from such acclaimed film-makers as Martin Scorsese, Christopher Nolan, and Greta Gerwig.</p>
 
-  <p>There's still a number of films that have a good chance of being added… Poor Things, Maestro, American Fiction and <a href="https://letterboxd.com/adamwills/watchlist/year/2023/">more…</a></p>
+  <p>There's still a number of films that have a good chance of being added… Maestro, American Fiction and <a href="https://letterboxd.com/adamwills/watchlist/year/2023/">more…</a></p>
 </Intro>
 }
 
 <List>
+  <FilmListItem
+    title="Poor Things"
+    year="2023"
+    director="Yorgos Lanthimos"
+    tmdbCoverId="jV3c2fsBNCJgcesxdNM9O0lwwdT"
+    letterboxdLink="https://letterboxd.com/film/poor-things-2023/"
+    trailerLink="https://www.youtube.com/watch?v=RlbR5N6veqw"
+    description="Yorgos Lanthimos delivers his most ambitious film to date and Emma Stone gives one of the best performances of the year. Unlike anything else."
+  />
   <FilmListItem
     title="Past Lives"
     year="2023"
@@ -103,14 +112,5 @@ import FilmListItem from "@components/FilmListItem.astro";
     letterboxdLink="https://letterboxd.com/film/when-evil-lurks/"
     description="The most impactful horro film of the year. Unsettling and beautifully shot, a must-see for genre fans."
     trailerLink="https://www.youtube.com/watch?v=YrTnV6gNzno"
-  />
-  <FilmListItem
-    title="Spider-Man: Across the Spider-Verse"
-    year="2023"
-    director="(Multiple)"
-    tmdbCoverId="5EA5u5HtCF32oG5hpHRmDXEqaff"
-    description="Such a unique animation style and a lot of fun on the big screen."
-    letterboxdLink="https://letterboxd.com/film/spider-man-across-the-spider-verse/"
-    trailerLink="https://www.youtube.com/watch?v=cqGjhVJWtEg"
   />
 </List>
